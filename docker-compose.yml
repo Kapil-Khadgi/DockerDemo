@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  mvcapp:
+    image: dockerdemo.mvcapp:latest
+    build:
+      context: .
+      dockerfile: DockerDemo.MvcApp/Dockerfile   
+    depends_on:
+      - api
+    ports:
+      - "5000:80"
+
+  api:
+    image: dockerdemo.api:latest
+    build:
+      context: .
+      dockerfile: DockerDemo.Api/Dockerfile 
+    ports:
+      - "5002:80"   
